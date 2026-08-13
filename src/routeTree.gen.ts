@@ -14,6 +14,7 @@ import { Route as CartRouteImport } from './routes/cart'
 import { Route as CategoriesRouteImport } from './routes/categories'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as HomeRouteImport } from './routes/home'
+import { Route as ListingsRouteImport } from './routes/listings'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SellRouteImport } from './routes/sell'
@@ -43,6 +44,11 @@ const CheckoutRoute = CheckoutRouteImport.update({
 const HomeRoute = HomeRouteImport.update({
   id: '/home',
   path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListingsRoute = ListingsRouteImport.update({
+  id: '/listings',
+  path: '/listings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/categories': typeof CategoriesRoute
   '/checkout': typeof CheckoutRoute
   '/home': typeof HomeRoute
+  '/listings': typeof ListingsRoute
   '/login': typeof LoginRoute
   '/search': typeof SearchRoute
   '/sell': typeof SellRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/categories': typeof CategoriesRoute
   '/checkout': typeof CheckoutRoute
   '/home': typeof HomeRoute
+  '/listings': typeof ListingsRoute
   '/login': typeof LoginRoute
   '/search': typeof SearchRoute
   '/sell': typeof SellRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/categories': typeof CategoriesRoute
   '/checkout': typeof CheckoutRoute
   '/home': typeof HomeRoute
+  '/listings': typeof ListingsRoute
   '/login': typeof LoginRoute
   '/search': typeof SearchRoute
   '/sell': typeof SellRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/categories'
     | '/checkout'
     | '/home'
+    | '/listings'
     | '/login'
     | '/search'
     | '/sell'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/categories'
     | '/checkout'
     | '/home'
+    | '/listings'
     | '/login'
     | '/search'
     | '/sell'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/categories'
     | '/checkout'
     | '/home'
+    | '/listings'
     | '/login'
     | '/search'
     | '/sell'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   CategoriesRoute: typeof CategoriesRoute
   CheckoutRoute: typeof CheckoutRoute
   HomeRoute: typeof HomeRoute
+  ListingsRoute: typeof ListingsRoute
   LoginRoute: typeof LoginRoute
   SearchRoute: typeof SearchRoute
   SellRoute: typeof SellRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listings': {
+      id: '/listings'
+      path: '/listings'
+      fullPath: '/listings'
+      preLoaderRoute: typeof ListingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -241,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   CategoriesRoute: CategoriesRoute,
   CheckoutRoute: CheckoutRoute,
   HomeRoute: HomeRoute,
+  ListingsRoute: ListingsRoute,
   LoginRoute: LoginRoute,
   SearchRoute: SearchRoute,
   SellRoute: SellRoute,
