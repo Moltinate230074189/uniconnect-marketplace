@@ -16,6 +16,7 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as ListingsRouteImport } from './routes/listings'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as MessagesRouteImport } from './routes/messages'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as SearchRouteImport } from './routes/search'
@@ -58,6 +59,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MessagesRoute = MessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
@@ -97,6 +103,7 @@ export interface FileRoutesByFullPath {
   '/home': typeof HomeRoute
   '/listings': typeof ListingsRoute
   '/login': typeof LoginRoute
+  '/messages': typeof MessagesRoute
   '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/search': typeof SearchRoute
@@ -112,6 +119,7 @@ export interface FileRoutesByTo {
   '/home': typeof HomeRoute
   '/listings': typeof ListingsRoute
   '/login': typeof LoginRoute
+  '/messages': typeof MessagesRoute
   '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/search': typeof SearchRoute
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/home': typeof HomeRoute
   '/listings': typeof ListingsRoute
   '/login': typeof LoginRoute
+  '/messages': typeof MessagesRoute
   '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/search': typeof SearchRoute
@@ -145,6 +154,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/listings'
     | '/login'
+    | '/messages'
     | '/notifications'
     | '/orders'
     | '/search'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/listings'
     | '/login'
+    | '/messages'
     | '/notifications'
     | '/orders'
     | '/search'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/listings'
     | '/login'
+    | '/messages'
     | '/notifications'
     | '/orders'
     | '/search'
@@ -191,6 +203,7 @@ export interface RootRouteChildren {
   HomeRoute: typeof HomeRoute
   ListingsRoute: typeof ListingsRoute
   LoginRoute: typeof LoginRoute
+  MessagesRoute: typeof MessagesRoute
   NotificationsRoute: typeof NotificationsRoute
   OrdersRoute: typeof OrdersRoute
   SearchRoute: typeof SearchRoute
@@ -250,6 +263,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/messages': {
+      id: '/messages'
+      path: '/messages'
+      fullPath: '/messages'
+      preLoaderRoute: typeof MessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notifications': {
       id: '/notifications'
       path: '/notifications'
@@ -303,6 +323,7 @@ const rootRouteChildren: RootRouteChildren = {
   HomeRoute: HomeRoute,
   ListingsRoute: ListingsRoute,
   LoginRoute: LoginRoute,
+  MessagesRoute: MessagesRoute,
   NotificationsRoute: NotificationsRoute,
   OrdersRoute: OrdersRoute,
   SearchRoute: SearchRoute,
