@@ -16,6 +16,7 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as ListingsRouteImport } from './routes/listings'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as SellRouteImport } from './routes/sell'
@@ -57,6 +58,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrdersRoute = OrdersRouteImport.update({
   id: '/orders',
   path: '/orders',
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/home': typeof HomeRoute
   '/listings': typeof ListingsRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/search': typeof SearchRoute
   '/sell': typeof SellRoute
@@ -105,6 +112,7 @@ export interface FileRoutesByTo {
   '/home': typeof HomeRoute
   '/listings': typeof ListingsRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/search': typeof SearchRoute
   '/sell': typeof SellRoute
@@ -120,6 +128,7 @@ export interface FileRoutesById {
   '/home': typeof HomeRoute
   '/listings': typeof ListingsRoute
   '/login': typeof LoginRoute
+  '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/search': typeof SearchRoute
   '/sell': typeof SellRoute
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/listings'
     | '/login'
+    | '/notifications'
     | '/orders'
     | '/search'
     | '/sell'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/listings'
     | '/login'
+    | '/notifications'
     | '/orders'
     | '/search'
     | '/sell'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/listings'
     | '/login'
+    | '/notifications'
     | '/orders'
     | '/search'
     | '/sell'
@@ -179,6 +191,7 @@ export interface RootRouteChildren {
   HomeRoute: typeof HomeRoute
   ListingsRoute: typeof ListingsRoute
   LoginRoute: typeof LoginRoute
+  NotificationsRoute: typeof NotificationsRoute
   OrdersRoute: typeof OrdersRoute
   SearchRoute: typeof SearchRoute
   SellRoute: typeof SellRoute
@@ -237,6 +250,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/orders': {
       id: '/orders'
       path: '/orders'
@@ -283,6 +303,7 @@ const rootRouteChildren: RootRouteChildren = {
   HomeRoute: HomeRoute,
   ListingsRoute: ListingsRoute,
   LoginRoute: LoginRoute,
+  NotificationsRoute: NotificationsRoute,
   OrdersRoute: OrdersRoute,
   SearchRoute: SearchRoute,
   SellRoute: SellRoute,
