@@ -16,6 +16,7 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as SearchRouteImport } from './routes/search'
+import { Route as SellRouteImport } from './routes/sell'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as ProductIdRouteImport } from './routes/product.$id'
 
@@ -54,6 +55,11 @@ const SearchRoute = SearchRouteImport.update({
   path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SellRoute = SellRouteImport.update({
+  id: '/sell',
+  path: '/sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
   '/search': typeof SearchRoute
+  '/sell': typeof SellRoute
   '/signup': typeof SignupRoute
   '/product/$id': typeof ProductIdRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
   '/search': typeof SearchRoute
+  '/sell': typeof SellRoute
   '/signup': typeof SignupRoute
   '/product/$id': typeof ProductIdRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/home': typeof HomeRoute
   '/login': typeof LoginRoute
   '/search': typeof SearchRoute
+  '/sell': typeof SellRoute
   '/signup': typeof SignupRoute
   '/product/$id': typeof ProductIdRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/login'
     | '/search'
+    | '/sell'
     | '/signup'
     | '/product/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/login'
     | '/search'
+    | '/sell'
     | '/signup'
     | '/product/$id'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/login'
     | '/search'
+    | '/sell'
     | '/signup'
     | '/product/$id'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   HomeRoute: typeof HomeRoute
   LoginRoute: typeof LoginRoute
   SearchRoute: typeof SearchRoute
+  SellRoute: typeof SellRoute
   SignupRoute: typeof SignupRoute
   ProductIdRoute: typeof ProductIdRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sell': {
+      id: '/sell'
+      path: '/sell'
+      fullPath: '/sell'
+      preLoaderRoute: typeof SellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup': {
       id: '/signup'
       path: '/signup'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   HomeRoute: HomeRoute,
   LoginRoute: LoginRoute,
   SearchRoute: SearchRoute,
+  SellRoute: SellRoute,
   SignupRoute: SignupRoute,
   ProductIdRoute: ProductIdRoute,
 }
