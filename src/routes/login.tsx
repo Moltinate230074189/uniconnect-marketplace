@@ -21,7 +21,7 @@ function Field({
   label,
   error,
   ...props
-}: React.InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string }) {
+}: React.InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string | undefined }) {
   return (
     <label className="block">
       <span className="mb-1.5 block text-sm font-medium">{label}</span>
